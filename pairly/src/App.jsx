@@ -185,17 +185,17 @@ const proximosPlanos = encontrosFuturos.slice(1, 4);
 
                     <p className="info-encontro">
                         <Calendar size={16} /> 
-                        {proximoEncontro.data.split("-").reverse().join("/")}
+                        {encontro.data.split("-").reverse().join("/")}
                     </p>
 
                     <p className="info-encontro">
                         <Clock size={16} />
-                        {proximoEncontro.horario || "Horário a definir"}
+                        {encontro.horario || "Horário a definir"}
                     </p>
 
                     <p className="info-encontro">
                           <MapPin size={16} />
-                          {proximoEncontro.local || "Local a definir"}
+                          {encontro.local || "Local a definir"}
                     </p>
                     </div>
                 ))}

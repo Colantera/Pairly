@@ -615,3 +615,83 @@
 .modal-confirmar:hover {
   background: #a65375;
 }
+
+
+/* Seções de encontros */
+
+.secao-encontros {
+  margin-top: 20px;
+}
+
+.secao-encontros-titulo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.secao-encontros-titulo svg {
+  color: #f08ba5;
+}
+
+.secao-encontros-titulo h3 {
+  color: #f7f2f5;
+  font-size: 20px;
+}
+
+.secao-encontros-titulo span {
+  background: #8e415f33;
+  color: #f08ba5;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Mensagem quando não existem encontros */
+
+.estado-vazio {
+  grid-column: 1 / -1;
+  background: #1d1b24;
+  border: 1px dashed #8e415f;
+  border-radius: 20px;
+  padding: 40px 25px;
+  text-align: center;
+}
+
+.estado-vazio svg {
+  color: #f08ba5;
+  margin-bottom: 15px;
+}
+
+.estado-vazio h4 {
+  color: #f7f2f5;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.estado-vazio p {
+  color: #a29bb0;
+  font-size: 13px;
+}
+
+/* Organizar seções uma abaixo da outra */
+
+.pagina > .secao-encontros {
+  width: 100%;
+}
+
+.secao-encontros {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.secao-encontros .lista-encontros {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, 300px), 1fr)
+  );
+  gap: 20px;
+}
