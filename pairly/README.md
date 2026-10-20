@@ -1,16 +1,78 @@
-# React + Vite
+# 💗 Pairly
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Pairly** é uma aplicação web desenvolvida para casais que desejam organizar seus momentos juntos de maneira simples, prática e especial.
 
-Currently, two official plugins are available:
+A proposta do projeto é reunir, em um único lugar, ferramentas para planejar encontros, guardar ideias de passeios, organizar gastos e descobrir novas experiências a dois.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Funcionalidades
 
-## React Compiler
+O Pairly é dividido em cinco seções principais:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **🏠 Dashboard:** visão geral do casal, mostrando o próximo encontro, os próximos planos e resumos das outras funcionalidades.
+- **📅 Nossos Encontros:** permite cadastrar encontros com nome, data, horário e local.
+- **🔖 Nossa Lista:** espaço planejado para salvar filmes, restaurantes, viagens e experiências que o casal deseja aproveitar.
+- **💰 Nosso Bolso:** seção planejada para organizar e acompanhar os gastos do casal.
+- **🧭 Descobrir:** funcionalidade futura para encontrar restaurantes, passeios e novos lugares para conhecer juntos.
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologias utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React:** construção da interface e dos componentes.
+- **JavaScript:** lógica e funcionalidades da aplicação.
+- **HTML e CSS:** estrutura e estilização.
+- **Vite:** ambiente de desenvolvimento.
+- **Lucide React:** biblioteca de ícones.
+- **LocalStorage:** armazenamento local dos encontros cadastrados.
+
+## ✅ Funcionalidades implementadas
+
+- Interface com tema escuro e design responsivo.
+- Menu lateral com navegação entre as cinco seções.
+- Cadastro de encontros.
+- Armazenamento dos encontros no navegador.
+- Exibição automática do próximo encontro no Dashboard.
+- Listagem de até três encontros futuros no Dashboard.
+
+## 🔮 Próximas funcionalidades
+
+- Editar e excluir encontros.
+- Marcar encontros como realizados.
+- Criar listas personalizadas de filmes, restaurantes e passeios.
+- Registrar e acompanhar despesas.
+- Integrar serviços para descobrir lugares reais.
+- Implementar autenticação e banco de dados para sincronizar informações entre os usuários.
+
+## 💻 Como executar o projeto
+
+**1. Clone o repositório:**
+
+```bash
+git clone https://github.com/Colantera/Pairly
+```
+
+**2. Entre na pasta do projeto:**
+
+```bash
+cd pairly
+```
+
+**3. Instale as dependências:**
+
+```bash
+npm install
+```
+
+**4. Inicie o servidor de desenvolvimento:**
+
+```bash
+npm run dev
+```
+
+Abra no navegador o endereço informado pelo Vite no terminal.
+
+## 📌 Status do projeto
+
+🚧 **Em desenvolvimento**
+
+O Pairly é um projeto pessoal criado para colocar em prática conhecimentos de desenvolvimento web com React, JavaScript e CSS, enquanto evolui para uma plataforma de organização e planejamento de experiências para casais.
+
+Atualmente, os encontros são armazenados localmente no navegador. A sincronização entre dispositivos será implementada futuramente.
