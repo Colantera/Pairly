@@ -458,3 +458,160 @@
 .botao-concluir:hover {
   background: #305b45;
 }
+
+
+/* Notificação personalizada */
+
+.notificacao {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 15px 18px;
+  background: #1d1b24;
+  border: 1px solid #8e415f;
+  border-radius: 14px;
+
+  color: #f7f2f5;
+  font-size: 14px;
+
+  box-shadow: 0 8px 30px #00000055;
+}
+
+.notificacao svg {
+  color: #f08ba5;
+}
+
+.notificacao button {
+  background: transparent;
+  border: none;
+  color: #a29bb0;
+  font-size: 22px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.notificacao {
+  animation: entrarNotificacao 0.4s ease-out;
+}
+
+@keyframes entrarNotificacao {
+  from {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.notificacao.saindo {
+  animation: sairNotificacao 0.4s ease-in forwards;
+}
+
+@keyframes sairNotificacao {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+}
+
+/* Fundo escuro atrás do modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+/* Janela de confirmação */
+.modal-exclusao {
+  width: 100%;
+  max-width: 420px;
+  background: #1d1b24;
+  border: 1px solid #38303f;
+  border-radius: 22px;
+  padding: 30px;
+  box-shadow: 0 20px 60px #00000080;
+}
+
+/* Ícone de lixeira */
+.modal-icone {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #8e415f33;
+  color: #f08ba5;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.modal-exclusao h3 {
+  color: #f7f2f5;
+  font-size: 21px;
+  margin-bottom: 12px;
+}
+
+.modal-exclusao p {
+  color: #a29bb0;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* Botões */
+.modal-botoes {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-botoes button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px;
+  border-radius: 11px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.modal-cancelar {
+  background: transparent;
+  border: 1px solid #38303f;
+  color: #f7f2f5;
+}
+
+.modal-cancelar:hover {
+  background: #302a38;
+}
+
+.modal-confirmar {
+  background: #8e415f;
+  border: 1px solid #8e415f;
+  color: white;
+}
+
+.modal-confirmar:hover {
+  background: #a65375;
+}

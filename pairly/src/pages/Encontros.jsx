@@ -1,10 +1,30 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Calendar, MapPin, Clock, Plus, Trash2, Pencil, CheckCircle2, RotateCcw } from "lucide-react";
 
 function Encontros({ encontros, setEncontros }) {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [idEditando, setIdEditando] = useState(null);
+  const [encontroParaExcluir, setEncontroParaExcluir] = useState(null);
+
+  const [notificacao, setNotificacao] = useState("");
+  const [saindo, setSaindo] = useState(false);
+  useEffect(() => {
+    if (!notificacao) return;
+
+    const iniciarSaida = setTimeout(() => {
+      setSaindo(true);
+    }, 3000);
+
+    const removerNotificacao = setTimeout(() => {
+      setNotificacao("");
+      setSaindo(false);
+    }, 3400);
+
+    return () => {
+      clearTimeout(iniciarSaida);
+      clearTimeout(removerNotificacao);
+    };
+  }, [notificacao]);
 
   const [novoEncontro, setNovoEncontro] = useState({
     nome: "",
@@ -29,14 +49,16 @@ function Encontros({ encontros, setEncontros }) {
             : encontro
         )
       );
+      setNotificacao("Encontro editado com sucesso!");
     } else {
       // Cadastrar um encontro novo
       const encontro = {
         ...novoEncontro,
         id: crypto.randomUUID()
       };
-
+      
       setEncontros((anteriores) => [...anteriores, encontro]);
+      setNotificacao("Encontro cadastrado com sucesso!");
     }
 
     // Limpar o formulário
@@ -52,13 +74,24 @@ function Encontros({ encontros, setEncontros }) {
   }
 
   function excluirEncontro(id) {
-    const confimar = window.confirm("Tem certeza de que deseja excluir este encontro?");
+    setEncontroParaExcluir(id);
+  }
 
-    if (confimar) {
-      setEncontros((anterioes) =>
-        anterioes.filter((encontro) => encontro.id !== id)
-      );
-    }
+  function confirmarExclusao() {
+    if (encontroParaExcluir === null) return;
+
+    setEncontros((anteriores) =>
+      anteriores.filter(
+        (encontro) => encontro.id !== encontroParaExcluir
+      )
+    );
+
+    setEncontroParaExcluir(null);
+    setNotificacao("Encontro excluído com sucesso!");
+  }
+
+  function cancelarExclusao() {
+    setEncontroParaExcluir(null);
   }
 
   function editarEncontro(encontro) {
@@ -85,6 +118,62 @@ function Encontros({ encontros, setEncontros }) {
 
   return (
     <div className="pagina">
+      {notificacao && (
+        <div className={`notificacao ${saindo ? "saindo" : ""}`}>
+          <CheckCircle2 size={20} />
+          <span>{notificacao}</span>
+
+          <button
+            type="button"
+            onClick={() => setNotificacao("")}
+            aria-label="Fechar notificação"
+          >
+            <Trash2 size={16} />
+          </button>
+        </div>
+      )}
+      {encontroParaExcluir !== null && (
+        <div className="modal-overlay" onClick={cancelarExclusao}>
+          <div
+            className="modal-exclusao"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="titulo-exclusao"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-icone">
+              <Trash2 size={26} />
+            </div>
+
+            <h3 id="titulo-exclusao">Excluir encontro?</h3>
+
+            <p>
+              Tem certeza que deseja excluir este encontro? Essa ação não poderá ser desfeita.
+            </p>
+
+            <div className="modal-botoes">
+              <button
+                type="button"
+                className="modal-cancelar"
+                onClick={cancelarExclusao}
+              >
+                Cancelar
+              </button>
+
+              <button
+                type="button"
+                className="modal-confirmar"
+                onClick={confirmarExclusao}
+              >
+                <Trash2 size={17} />
+                Sim, excluir
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
       <div className="pagina-cabecalho">
         <div>
           <h2>Nossos Encontros</h2>
