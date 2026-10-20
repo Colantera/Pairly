@@ -1,0 +1,311 @@
+
+.app {
+  display: flex;
+  min-height: 100vh;
+  background: #101015;
+  color: #f7f2f5;
+}
+
+.sidebar {
+  width: 260px;
+  background: #181620;
+  border-right: 1px solid #2a2635;
+  padding: 24px;
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.logo h1 {
+  font-size: 25px;
+}
+
+.logo-icon {
+  background: linear-gradient(135deg, #8e415f, #f08ba5);
+  padding: 10px;
+  border-radius: 14px;
+  display: flex;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: #a29bb0;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background: #8e415f33;
+  color: #f08ba5;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 40px;
+}
+
+.welcome {
+  background: linear-gradient(110deg, #1d1b24, #302236);
+  padding: 30px;
+  border-radius: 24px;
+  margin-bottom: 30px;
+}
+
+.welcome span {
+  color: #f08ba5;
+  font-size: 13px;
+}
+
+.welcome h2 {
+  font-size: 30px;
+  margin: 12px 0;
+}
+
+.welcome p,
+.card p {
+  color: #a29bb0;
+  font-size: 14px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: #1d1b24;
+  border: 1px solid #2a2635;
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.card h3 {
+  margin: 16px 0 10px;
+}
+
+@media (max-width: 850px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pagina {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pagina h2 {
+  font-size: 28px;
+  color: #f7f2f5;
+}
+
+.pagina > p {
+  color: #a29bb0;
+  font-size: 14px;
+}
+
+.pagina .card {
+  max-width: 500px;
+  margin-top: 10px;
+}
+
+.menu-item {
+  width: 100%;
+}
+
+.pagina-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.pagina-cabecalho p {
+  color: #a29bb0;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.botao-principal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #8e415f, #f08ba5);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botao-principal:hover {
+  opacity: 0.9;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 24px;
+  background: #1d1b24;
+  border: 1px solid #2a2635;
+  border-radius: 20px;
+  max-width: 500px;
+}
+
+.formulario input {
+  background: #101015;
+  border: 1px solid #2a2635;
+  border-radius: 10px;
+  padding: 13px;
+  color: white;
+  font-family: inherit;
+}
+
+.formulario input:focus {
+  outline: none;
+  border-color: #f08ba5;
+}
+
+.lista-encontros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 20px;
+}
+
+.lista-encontros .card {
+  max-width: none;
+  margin-top: 0;
+}
+
+.lista-encontros .card p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.nome-encontro {
+  font-size: 18px;
+  color: #f08ba5;
+  margin: 15px 0;
+}
+
+.card p {
+  margin-top: 8px;
+}
+
+/* Próximos planos do Dashboard */
+
+.proximos-planos {
+  margin-top: 30px;
+}
+
+.secao-titulo {
+  margin-bottom: 20px;
+}
+
+.secao-titulo h3 {
+  font-size: 20px;
+  color: #f7f2f5;
+  margin-bottom: 6px;
+}
+
+.secao-titulo p {
+  color: #a29bb0;
+  font-size: 13px;
+}
+
+.planos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.plano-card {
+  background: #1d1b24;
+  border: 1px solid #2a2635;
+  border-radius: 20px;
+  padding: 22px;
+  transition: 0.2s;
+}
+
+.plano-card:hover {
+  border-color: #8e415f;
+  transform: translateY(-3px);
+}
+
+.plano-icone {
+  width: 42px;
+  height: 42px;
+  background: #8e415f33;
+  color: #f08ba5;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.plano-card h4 {
+  color: #f7f2f5;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.plano-card p {
+  color: #a29bb0;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.sem-planos {
+  padding: 25px;
+  background: #1d1b24;
+  border: 1px dashed #8e415f;
+  border-radius: 16px;
+  color: #a29bb0;
+}
+
+@media (max-width: 1000px) {
+  .planos-grid {
+    grid-template-columns: 1fr;
+  }
+}
