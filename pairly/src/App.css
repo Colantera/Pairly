@@ -309,3 +309,38 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Deixa os ícones de data e horário brancos */
+.formulario input[type="text"],
+.formulario input[type="date"],
+.formulario input[type="time"] {
+  color-scheme: dark;
+  color: #a29bb0;
+}
+
+/* Ícones do calendário e relógio */
+.formulario input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* Texto dos campos vazios */
+.formulario input[type="text"]::placeholder,
+.formulario input[type="date"]::-webkit-datetime-edit,
+.formulario input[type="time"]::-webkit-datetime-edit {
+  color: #a29bb0;
+}
+
+.info-encontro,
+.plano-card .info-encontro {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  color: #a29bb0;
+}
+
+.info-encontro svg {
+  color: #f08ba5;
+  flex-shrink: 0;
+}

@@ -7,7 +7,9 @@ import {
   Wallet,
   Bookmark,
   Sparkles,
-  Compass
+  Compass,
+  Clock,
+  MapPin
 } from "lucide-react";
 
 import "./App.css";
@@ -128,16 +130,19 @@ const proximosPlanos = encontrosFuturos.slice(1, 4);
                     {proximoEncontro.nome}
                     </h4>
 
-                    <p>
-                    📅 {proximoEncontro.data.split("-").reverse().join("/")}
+                    <p className="info-encontro">
+                      <Calendar size={16} /> 
+                      {proximoEncontro.data.split("-").reverse().join("/")}
                     </p>
 
-                    <p>
-                    🕒 {proximoEncontro.horario || "Horário a definir"}
+                    <p className="info-encontro">
+                    <Clock size={16} />
+                    {proximoEncontro.horario || "Horário a definir"}
                     </p>
-
-                    <p>
-                    📍 {proximoEncontro.local || "Local a definir"}
+                    
+                    <p className="info-encontro">
+                      <MapPin size={16} />
+                      {proximoEncontro.local || "Local a definir"}
                     </p>
                 </>
                 ) : (
@@ -175,16 +180,19 @@ const proximosPlanos = encontrosFuturos.slice(1, 4);
 
                     <h4>{encontro.nome}</h4>
 
-                    <p>
-                        📅 {encontro.data.split("-").reverse().join("/")}
+                    <p className="info-encontro">
+                        <Calendar size={16} /> 
+                        {proximoEncontro.data.split("-").reverse().join("/")}
                     </p>
 
-                    <p>
-                        🕒 {encontro.horario || "Horário a definir"}
+                    <p className="info-encontro">
+                        <Clock size={16} />
+                        {proximoEncontro.horario || "Horário a definir"}
                     </p>
 
-                    <p>
-                        📍 {encontro.local || "Local a definir"}
+                    <p className="info-encontro">
+                          <MapPin size={16} />
+                          {proximoEncontro.local || "Local a definir"}
                     </p>
                     </div>
                 ))}
