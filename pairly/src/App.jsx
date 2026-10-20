@@ -43,7 +43,10 @@ const dataHoje = [
 ].join("-");
 
 const encontrosFuturos = encontros
-  .filter((encontro) => encontro.data >= dataHoje)
+  .filter(
+    (encontro) =>
+      encontro.data >= dataHoje && !encontro.realizado
+  )
   .sort((a, b) => {
     const dataA = `${a.data}T${a.horario || "00:00"}`;
     const dataB = `${b.data}T${b.horario || "00:00"}`;

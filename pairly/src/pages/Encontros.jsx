@@ -1,9 +1,10 @@
 
 import { useState } from "react";
-import { Calendar, MapPin, Clock, Plus } from "lucide-react";
+import { Calendar, MapPin, Clock, Plus, Trash2, Pencil, CheckCircle2, RotateCcw } from "lucide-react";
 
 function Encontros({ encontros, setEncontros }) {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [idEditando, setIdEditando] = useState(null);
 
   const [novoEncontro, setNovoEncontro] = useState({
     nome: "",
@@ -19,13 +20,26 @@ function Encontros({ encontros, setEncontros }) {
       return;
     }
 
-    const encontro = {
-      ...novoEncontro,
-      id: crypto.randomUUID()
-    };
+    if (idEditando !== null) {
+      // Atualizar um encontro existente
+      setEncontros((anteriores) =>
+        anteriores.map((encontro) =>
+          encontro.id === idEditando
+            ? { ...encontro, ...novoEncontro }
+            : encontro
+        )
+      );
+    } else {
+      // Cadastrar um encontro novo
+      const encontro = {
+        ...novoEncontro,
+        id: crypto.randomUUID()
+      };
 
-    setEncontros([...encontros, encontro]);
+      setEncontros((anteriores) => [...anteriores, encontro]);
+    }
 
+    // Limpar o formulário
     setNovoEncontro({
       nome: "",
       data: "",
@@ -33,7 +47,40 @@ function Encontros({ encontros, setEncontros }) {
       local: ""
     });
 
+    setIdEditando(null);
     setMostrarFormulario(false);
+  }
+
+  function excluirEncontro(id) {
+    const confimar = window.confirm("Tem certeza de que deseja excluir este encontro?");
+
+    if (confimar) {
+      setEncontros((anterioes) =>
+        anterioes.filter((encontro) => encontro.id !== id)
+      );
+    }
+  }
+
+  function editarEncontro(encontro) {
+    setNovoEncontro({
+      nome: encontro.nome,
+      data: encontro.data,
+      horario: encontro.horario,
+      local: encontro.local
+    });
+
+    setIdEditando(encontro.id);
+    setMostrarFormulario(true);
+  }
+
+  function alternarConclusao(id) {
+    setEncontros((anteriores) =>
+      anteriores.map((encontro) =>
+        encontro.id === id
+          ? { ...encontro, realizado: !encontro.realizado }
+          : encontro
+      )
+    );
   }
 
   return (
@@ -55,7 +102,7 @@ function Encontros({ encontros, setEncontros }) {
 
       {mostrarFormulario && (
         <form className="formulario" onSubmit={adicionarEncontro}>
-          <h3>Planejar encontro</h3>
+          <h3>{idEditando !== null ? "Editar encontro" : "Planejar encontro"}</h3>
 
           <input
             type="text"
@@ -94,7 +141,7 @@ function Encontros({ encontros, setEncontros }) {
           />
 
           <button className="botao-principal" type="submit">
-            Salvar Encontro
+            {idEditando !== null ? "Salvar Alterações" : "Salvar Encontro"}
           </button>
         </form>
       )}
@@ -108,8 +155,21 @@ function Encontros({ encontros, setEncontros }) {
           </div>
         ) : (
           encontros.map((encontro) => (
-            <div className="card" key={encontro.id}>
-              <h3>{encontro.nome}</h3>
+            <div
+              className={`card card-encontro ${encontro.realizado ? "realizado" : ""}`}
+              key={encontro.id}
+            >
+              <div className="encontro-titulo">
+                <h3>{encontro.nome}</h3>
+
+                <span
+                  className={`status-encontro ${
+                    encontro.realizado ? "status-realizado" : "status-pendente"
+                  }`}
+                >
+                  {encontro.realizado ? "Realizado" : "Pendente"}
+                </span>
+              </div>
 
               <p>
                 <Calendar size={16} />
@@ -125,6 +185,46 @@ function Encontros({ encontros, setEncontros }) {
                 <MapPin size={16} />
                 {encontro.local || "Local a definir"}
               </p>
+
+              <div className="acoes-encontro">
+                <button
+                  type="button"
+                  className="botao-concluir"
+                  onClick={() => alternarConclusao(encontro.id)}
+                >
+                  {encontro.realizado ? (
+                    <>
+                      <RotateCcw size={18} />
+                      Reabrir
+                    </>
+                  ) : (
+                    <>
+                      <CheckCircle2 size={18} />
+                      Concluir
+                    </>
+                  )}
+                </button>
+
+                <button
+                  type="button"
+                  className="botao-editar"
+                  onClick={() => editarEncontro(encontro)}
+                >
+                  <Pencil size={18} />
+                  Editar
+                </button>
+
+                <button
+                  type="button"
+                  className="botao-excluir"
+                  onClick={() => excluirEncontro(encontro.id)}
+                >
+                  <Trash2 size={18} />
+                  Excluir
+                </button>
+              </div>
+
+              
             </div>
           ))
         )}

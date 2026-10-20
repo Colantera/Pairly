@@ -344,3 +344,117 @@
   color: #f08ba5;
   flex-shrink: 0;
 }
+
+.botao-excluir {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 10px 15px;
+  background: transparent;
+  border: 1px solid #8e415f;
+  border-radius: 10px;
+  color: #f08ba5;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.botao-excluir:hover {
+  background: #8e415f33;
+}
+
+
+/* Botões de ações dos encontros */
+
+.acoes-encontro {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.botao-editar,
+.botao-excluir {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 0;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.botao-editar {
+  background: #8e415f33;
+  border: 1px solid #8e415f;
+  color: #f08ba5;
+}
+
+.botao-editar:hover {
+  background: #8e415f66;
+}
+
+.botao-excluir:hover {
+  background: #8e415f33;
+}
+
+
+/* Status dos encontros */
+
+.encontro-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.encontro-titulo h3 {
+  margin: 0;
+}
+
+.status-encontro {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-pendente {
+  background: #8e415f33;
+  color: #f08ba5;
+}
+
+.status-realizado {
+  background: #244b3a;
+  color: #9de0b7;
+}
+
+.card-encontro.realizado {
+  border-color: #36634b;
+}
+
+.botao-concluir {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 15px;
+  background: #244b3a;
+  border: 1px solid #36634b;
+  border-radius: 10px;
+  color: #9de0b7;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.botao-concluir:hover {
+  background: #305b45;
+}
